@@ -38,7 +38,8 @@ const Navbar = async () => {
                 type="text"
                 name='searchQuery'
                 className='input input-bordered w-full min-w-[150px]'
-                placeholder='Search' />
+                placeholder='Search'
+                required />
             </div>
           </form>
           <ShoppingCartButton cart={cart} />
