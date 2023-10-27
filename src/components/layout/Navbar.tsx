@@ -7,6 +7,7 @@ import ShoppingCartButton from '../buttons/ShoppingCartButton';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import UserMenuButton from '../buttons/UserMenuButton';
+import NewProductButton from '../buttons/NewProductButton';
 
 export const searchProducts = async (formData: FormData): Promise<void> => {
   "use server";
@@ -32,9 +33,10 @@ const Navbar = async () => {
           </Link>
         </div>
         <div className="flex-none gap-2">
+          {session?.user && <NewProductButton className='hidden md:flex' />}
           <form action={searchProducts}>
             <div className="form-control">
-              <input 
+              <input
                 type="text"
                 name='searchQuery'
                 className='input input-bordered w-full min-w-[150px]'
@@ -45,6 +47,7 @@ const Navbar = async () => {
           <ShoppingCartButton cart={cart} />
           <UserMenuButton session={session} />
         </div>
+        {session?.user && <NewProductButton className='md:hidden mt-4' />}
       </div>
     </div>
   )

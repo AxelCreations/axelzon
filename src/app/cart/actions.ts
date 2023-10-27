@@ -1,8 +1,8 @@
 'use server';
 
-import { getCart, createCart } from "@/lib/db/cart";
-import prisma from "@/lib/db/prisma";
-import { revalidatePath } from "next/cache";
+import { getCart, createCart } from '@/lib/db/cart';
+import prisma from '@/lib/db/prisma';
+import { revalidatePath } from 'next/cache';
 
 export const setProductQuantity = async (productId: string, quantity: number): Promise<void> => {
   const cart = (await getCart()) ?? (await createCart());
@@ -11,13 +11,27 @@ export const setProductQuantity = async (productId: string, quantity: number): P
 
   if (articleInCart) {
     if (quantity === 0) {
-      await prisma.cartItem.delete({
-        where: { id: articleInCart.id }
+      await prisma.cart.update({
+        where: { id: cart.id },
+        data: {
+          items: {
+            delete: { id: articleInCart.id }
+          }
+        }
       });
     } else {
-      await prisma.cartItem.update({
-        where: { id: articleInCart.id },
-        data: {quantity}
+      await prisma.cart.update({
+        where: { id: cart.id },
+        data: {
+          items: {
+            update: {
+              where: { id: articleInCart.id },
+              data: {
+                quantity
+              }
+            }
+          }
+        }
       });
     }
   }
