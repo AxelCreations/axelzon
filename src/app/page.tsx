@@ -1,14 +1,19 @@
+import PaginationBar from '@/components/Paginationbar';
 import ProductCard from '@/components/ProductCard';
 import prisma from '@/lib/db/prisma';
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
+
+type HomeProps = {
+  searchParams: { page: string };
+}
 
 const Home = async () => {
   const products = await prisma.product.findMany({
     orderBy: { id: 'desc' }
   });
   return (
-    <>
+    <div className='flex flex-col items-center'>
       <div className='hero rounded-xl bg-base-200'>
         <div className='hero-content flex-col lg:flex-row'>
           <Image
@@ -35,7 +40,9 @@ const Home = async () => {
       <div className='my-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5'>
         {products.slice(1).map(product => <ProductCard product={product} key={product.id} />)}
       </div>
-    </>
+
+      <PaginationBar currentPage={13} totalPages={99} />
+    </div>
   )
 }
 

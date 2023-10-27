@@ -26,7 +26,7 @@ const CartEntry = ({ cartItem: { product, quantity }, setProductQuantity }: Cart
   }
 
   return (
-    <div>
+    <>
       <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
         <Image 
           src={product.imageUrl}
@@ -65,7 +65,7 @@ const CartEntry = ({ cartItem: { product, quantity }, setProductQuantity }: Cart
         </div>
       </div>
       <div className="divider" />
-    </div>
+    </>
   )
 }
 

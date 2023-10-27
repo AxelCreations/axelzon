@@ -25,5 +25,5 @@ export const incrementProductQuantity = async (productId: string): Promise<void>
     });
   }
 
-  revalidatePath("/products/[id]");
+  revalidatePath('/products/[id]', 'page');
 }

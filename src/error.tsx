@@ -1,7 +1,7 @@
 "use client";
 
 const ErrorPage = (): JSX.Element => {
-  return <div><h1>Something went wrong. Reload the page.</h1></div>
+  return <h1>Something went wrong. Reload the page.</h1>
 }
 
 export default ErrorPage;

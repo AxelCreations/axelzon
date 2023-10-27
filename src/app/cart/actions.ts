@@ -22,5 +22,5 @@ export const setProductQuantity = async (productId: string, quantity: number): P
     }
   }
 
-  revalidatePath('/cart');
+  revalidatePath('/cart', 'page');
 }

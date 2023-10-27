@@ -12,15 +12,13 @@ const CartPage = async () => {
   const cart = await getCart();
 
   return (
-    <div>
+    <>
       <h1 className="mb-6 text-3xl font-bold">Shopping Cart</h1>
       {cart?.items.map(cartItem => (
-        <>
-          <CartEntry
-            key={cartItem.id}
-            cartItem={cartItem}
-            setProductQuantity={setProductQuantity} />
-        </>
+        <CartEntry
+          key={cartItem.id}
+          cartItem={cartItem}
+          setProductQuantity={setProductQuantity} />
       ))}
 
       {!cart?.items.length && (
@@ -38,7 +36,7 @@ const CartPage = async () => {
           <button className="btn btn-primary md:w-[250px]">Checkout</button>
         </div>
       )}
-    </div>
+    </>
   )
 }
 
