@@ -29,11 +29,10 @@ const Navbar = async () => {
       <div className="navbar max-w-7xl m-auto flex-col sm:flex-row">
         <div className="flex-1">
           <Link href="/" className='btn btn-ghost'>
-            <Image src={logo} height={40} width={120} alt='Axelzon logo' />
+            <Image src={logo} height={40} width={120} alt='AxelZon logo' />
           </Link>
         </div>
         <div className="flex-none gap-2">
-          {session?.user && <NewProductButton className='hidden md:flex' />}
           <form action={searchProducts}>
             <div className="form-control">
               <input
@@ -47,7 +46,6 @@ const Navbar = async () => {
           <ShoppingCartButton cart={cart} />
           <UserMenuButton session={session} />
         </div>
-        {session?.user && <NewProductButton className='md:hidden mt-4' />}
       </div>
     </div>
   )

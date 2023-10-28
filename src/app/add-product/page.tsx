@@ -1,8 +1,9 @@
-import SubmitButton from "@/components/buttons/SubmitButton";
+
 import prisma from "@/lib/db/prisma";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+import AddProductForm from "@/components/forms/AddProductForm";
 
 export const metadata = {
   title: 'Add Product - AxelZon',
@@ -43,36 +44,7 @@ const AddProductPage = async (): Promise<JSX.Element> => {
   return (
     <>
       <h1 className="mb-3 text-xl font-bold">Add Product</h1>
-      <form action={addProduct}>
-        <input
-          required
-          type="text"
-          name="name"
-          placeholder="Name"
-          className="input input-bordered mb-3 w-full" />
-
-        <textarea
-          required
-          name="description"
-          placeholder="Description"
-          className="textarea-bordered textarea mb-3 w-full" />
-
-        <input
-          required
-          type="url"
-          name="imageUrl"
-          placeholder="Image URL"
-          className="input input-bordered mb-3 w-full" />
-
-        <input
-          required
-          type="number"
-          name="price"
-          placeholder="Price"
-          className="input input-bordered mb-3 w-full" />
-
-        <SubmitButton className="btn-block">Add Product</SubmitButton>
-      </form>
+      <AddProductForm addProductAction={addProduct} />
     </>
   )
 }

@@ -10,18 +10,19 @@ type ProductCardProps = {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const isNew = (Date.now() - new Date(product.createdAt).getTime()) < (1000 * 60 * 60 * 24 * 7);
+  const previewImage = 'https://images.unsplash.com/photo-1663465374413-83cba00bff6f?auto=format&fit=crop&q=80&w=2080&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
   return (
     <Link
-      href={'/products/' + product.id}
+      href={Boolean(product.id.length) ? `/products/${product.id}` : '#'}
       className='card w-full bg-base-100 hover:shadow-xl transition:shadow'>
       <figure>
-        <Image 
-          src={product.imageUrl}
+        <Image
+          src={product.imageUrl || previewImage}
           alt={product.name}
           height={400}
           width={800}
-          className='h-48 object-cover'
+          className='h-[400px] object-cover min-h=[400px]'
         />
       </figure>
       <div className='card-body'>

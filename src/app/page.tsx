@@ -1,14 +1,18 @@
 import PaginationBar from '@/components/Paginationbar';
 import ProductCard from '@/components/ProductCard';
+import NewProductButton from '@/components/buttons/NewProductButton';
 import prisma from '@/lib/db/prisma';
+import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import Link from 'next/link';
+import { authOptions } from './api/auth/[...nextauth]/route';
 
 type HomeProps = {
   searchParams: { page: string };
 }
 
 const Home = async ({ searchParams: { page = '1' } }: HomeProps) => {
+  const session = await getServerSession(authOptions);
   const currentPage = parseInt(page);
   const pageSize = 6;
 
@@ -23,6 +27,7 @@ const Home = async ({ searchParams: { page = '1' } }: HomeProps) => {
 
   return (
     <div className='flex flex-col items-center'>
+      {session?.user && <NewProductButton className='my-5 self-start sm:self-center' />}
       <div className='hero rounded-xl bg-base-200'>
         <div className='hero-content flex-col lg:flex-row'>
           <Image

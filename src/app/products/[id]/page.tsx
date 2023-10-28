@@ -26,7 +26,7 @@ export const generateMetadata = async ({ params: { id } }: ProductPageProps): Pr
   const product = await getProduct(id);
 
   return {
-    title: `${product.name} - Axelzon`,
+    title: `${product.name} - AxelZon`,
     description: product.description,
     openGraph: {
       images: [{url: product.imageUrl}],
@@ -38,16 +38,16 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
   const product = await getProduct(id);
 
   return (
-    <div className='flex flex-col lg:flex-row gap-4'>
+    <div className='flex flex-col lg:flex-row gap-4 items-center'>
       <Image
         src={product.imageUrl}
         alt={product.name}
         height={500}
         width={500}
-        className='rounded-lg object-contain max-h-[200px] lg:max-h-[500px]'
+        className='rounded-lg object-cover max-h-[300px] lg:max-h-[400px] lg:min-h-[400px]'
         priority
       />
-      <div>
+      <div className='flex flex-col justify-center'>
         <h1 className='text-5xl font-bold'>{product.name}</h1>
         <PriceTag price={product.price} className='mt-4' />
         <p className='py-6'>{product.description}</p>

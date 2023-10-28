@@ -10,7 +10,7 @@ type SearchPageProps = {
 
 export const generateMetadata = ({searchParams: { query }}: SearchPageProps) => {
   return {
-    title: `Searching: ${query} - Axelzon`
+    title: `Searching: ${query} - AxelZon`
   }
 }
 

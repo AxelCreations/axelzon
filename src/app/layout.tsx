@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <SessionProvider>
         <Navbar />
-        <main className='p-4 max-w-7xl m-auto min-w-[300px]'>
+        <main className='p-4 max-w-7xl m-auto min-w-[300px]' style={{minHeight: 'calc(100vh - 194px)'}}>
           {children}
         </main>
         <Footer />
