@@ -13,7 +13,7 @@ type AddProductFormProps = {
 export const ProductSchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
-  imageUrl: z.string().url(),
+  imageUrl: z.string().url().startsWith('https://images.unsplash.com/'),
   price: z.number(),
 });
 
@@ -37,7 +37,7 @@ const AddProductForm = ({ addProductAction }: AddProductFormProps) => {
         ProductSchema.shape.imageUrl.parse(value);
         setImageError('');
       } catch (err) {
-        setImageError('Invalid URL.')
+        setImageError('Invalid URL. Only images from Unsplash are allowed: https://images.unsplash.com')
         return;
       }
     }
