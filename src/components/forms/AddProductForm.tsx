@@ -2,7 +2,7 @@
 
 import SubmitButton from '@/components/buttons/SubmitButton';
 import { Product } from '@prisma/client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from '@/components/ProductCard';
 import z from 'zod';
 

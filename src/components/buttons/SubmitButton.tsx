@@ -8,9 +8,9 @@ type SubmitButtonProps = {
   className?: string,
 } & ComponentProps<"button">
 
-const SubmitButton = ( {children, className, ...props}: SubmitButtonProps ): JSX.Element => {
+const SubmitButton = ( {children, className, ...props}: SubmitButtonProps ): JSX.Element => {  
   const { pending } = useFormStatus();
-  
+
   return (
     <button 
       {...props}
